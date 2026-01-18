@@ -21,3 +21,8 @@ logs/
 *.log
 *.pt
 *.onnx
+*.wav
+*.flac
+*.mp3
+*.m4a
+*.ogg
