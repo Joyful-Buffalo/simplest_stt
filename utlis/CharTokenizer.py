@@ -21,6 +21,7 @@ class CharTokenizer:
                         char_set.add(char)
         for char in self.chars:
             char_set.add(char)
+        char_set = ''.join(sorted(list(char_set)))
         return char_set
 
     def encode(self, text: str):
