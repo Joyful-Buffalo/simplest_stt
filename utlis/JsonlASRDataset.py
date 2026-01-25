@@ -1,4 +1,5 @@
 import json
+import torch
 from torch.utils.data import Dataset
 import torchaudio
 
@@ -21,13 +22,13 @@ class JsonlASRDataset(Dataset):
     
     def __len__(self):
         return len(self.json_list)
-    
-    def __getitem__(self, idx):
+
+    def __getitem__(self, idx)->tuple[torch.Tensor, torch.Tensor]:
         item = self.json_list[idx]
         path = item['path']
         txt = item['txt']
         wav, *_ = torchaudio.load(path)
         fbank  = torchaudio.compliance.kaldi.fbank(wav)
         
-        return fbank, self.tokenizer.encode(txt)
+        return fbank, torch.tensor(self.tokenizer.encode(txt),dtype=torch.long)
         
