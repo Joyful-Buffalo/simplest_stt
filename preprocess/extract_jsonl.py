@@ -50,10 +50,13 @@ def main():
             for audio_file in audio_files:
                 file_id = audio_file.stem
                 if file_id in transcripts:
+                    info = torchaudio.info(str(audio_file))
+                    duration = info.num_frames / info.sample_rate
                     data = {
                         "path": str(audio_file),
                         "txt": transcripts[file_id],
-                        "key": file_id
+                        "key": file_id,
+                        "duration": duration
                     }
                 json_f.write(json.dumps(data, ensure_ascii=False) + '\n')
         print(f'get duration distribution for {split} set:')
