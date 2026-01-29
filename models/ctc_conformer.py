@@ -1,11 +1,9 @@
 from typing import Union
 from torch import nn
 import torch
-import torchaudio
 
 from models.utils import _conv_output_length_int, _pair, _conv_output_length_tensor
-
-
+from models.conformer import Conformer
 
 class Conv2dSubsampling(nn.Module):
     def __init__(
@@ -98,7 +96,7 @@ class CTCConformer(nn.Module):
             out_dim=encoder_dim,
             dropout_rate=dropout_rate
         )
-        self.conformer = torchaudio.models.Conformer(
+        self.conformer = Conformer(
             input_dim=encoder_dim,
             num_heads=num_heads,
             ffn_dim=ffn_dim,
