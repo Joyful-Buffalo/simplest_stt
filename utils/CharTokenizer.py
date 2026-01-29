@@ -7,8 +7,11 @@ class CharTokenizer:
         self.jsonl_paths = jsonl_paths if jsonl_paths is not None else []
         self.chars = chars if chars is not None else ''
         self.chars = self.build_chars()
-        self.char2idx = {char: idx for idx, char in enumerate(self.chars)}
-        self.idx2char = {idx: char for idx, char in enumerate(self.chars)}
+        self.char2idx = {char: idx + 1 for idx, char in enumerate(self.chars)}
+        self.idx2char = {idx + 1: char for idx, char in enumerate(self.chars)}
+
+    def vocab_size(self):
+        return len(self.chars) + 1  # +1 for blank token
 
     def build_chars(self):
         char_set = set()
