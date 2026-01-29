@@ -1,5 +1,6 @@
 from typing import Union
 from torch import nn
+import torch
 import torchaudio
 
 from models.utils import _conv_output_length_int, _pair, _conv_output_length_tensor
@@ -54,7 +55,7 @@ class Conv2dSubsampling(nn.Module):
         assert out_freq > 0, "Conv2dSubsampling reduces frequency dimension to zero or negative value" 
         self.out = nn.Linear(out_dim * out_freq, out_dim)
 
-    def forward(self, x: nn.Tensor, x_len: nn.Tensor) -> tuple[nn.Tensor, nn.Tensor]:
+    def forward(self, x: torch.Tensor, x_len: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
         batch_size = x.size(0)
         x = x.unsqueeze(1)  # (batch, 1, time, feature)
         x = self.conv(x)    # (batch, out_dim, time', feature')
@@ -107,8 +108,8 @@ class CTCConformer(nn.Module):
         )
         self.ctc_linear = nn.Linear(encoder_dim, vocab_size)
 
-    def forward(self, x: nn.Tensor, x_len: nn.Tensor) -> tuple[nn.Tensor, nn.Tensor]:
+    def forward(self, x: torch.Tensor, x_len: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
         x, x_len = self.subsampling(x, x_len)
-        x = self.conformer(x, x_len)
+        x, _ = self.conformer(x, x_len)
         x = self.ctc_linear(x)
         return x, x_len
