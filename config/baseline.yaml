@@ -1,0 +1,33 @@
+epoch: 50
+lr: 0.001
+weight_decay: 0.00001
+fused: true
+use_amp: true
+tf32: true
+jsonl_paths:
+  train_jsonl: dataset/aishell1/data_aishell/transcript/aishell1_train.jsonl
+  dev_jsonl: dataset/aishell1/data_aishell/transcript/aishell1_dev.jsonl
+  test_jsonl: dataset/aishell1/data_aishell/transcript/aishell1_test.jsonl
+dataset_config:
+  cmvn_path: dataset/aishell1/cmvn.npy
+  batch_size: null
+  max_frame_per_batch: 8192
+  bucket_size: 100
+  num_workers: 8
+  prefetch_factor: 2
+  pin_memory: true
+  shuffle: true
+  fbank_config:
+    sample_rate: 16000
+    feature_dim: 80
+    frame_length_ms: 25
+    frame_shift_ms: 10
+    dither: 0.0
+model_config:
+  encoder:
+    encoder_dim: 256
+    ffn_dim: 2048
+    num_layers: 12
+    num_heads: 4
+    dropout_rate: 0.1
+    depthwise_conv_kernel_size: 31
