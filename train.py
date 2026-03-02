@@ -16,9 +16,10 @@ from utils.load_func import load_proj_root, load_yaml
 from utils.CharTokenizer import CharTokenizer
 from utils.dynamic_batch_sampler import DynamicBatchSampler
 from utils.asr_collate_fn import asr_collate_fn
+from utils.noamLR import NoamLR
 from torch.nn.attention import sdpa_kernel, SDPBackend
 from torch.nn import functional
-from train import WarmupLR
+
 
 class Trainer:
     def __init__(self, proj_root=load_proj_root()):
@@ -98,7 +99,7 @@ class Trainer:
             torch.backends.cudnn.allow_tf32 = True
             print("Enabled TF32 for matmul and cudnn.")
         self.model = self.dynamic_pre_compile()
-        self.warmup_lr = WarmupLR(self.optimizer, 12000)
+        self.warmup_lr = NoamLR(self.optimizer, 12000)
 
     def dynamic_pre_compile(self):
         warmup_batch = next(iter(self.train_loader))
