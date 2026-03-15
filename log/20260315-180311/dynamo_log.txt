@@ -1,0 +1,159 @@
+(asr) usrname@usrname-System-Product-Name:~/data/public_repositories/simplest_stt$ python train.py 
+Number of unique characters: 4333
+Using device: cuda
+Enabled TF32 for matmul and cudnn.
+Training: 100%|█████████████████████████████| 6821/6821 [05:59<00:00, 18.96it/s]
+Development: 100%|████████████████████████████| 818/818 [00:54<00:00, 15.03it/s]
+Epoch 1/50: Train Loss=76.0632, CER=89.67% | Dev Loss=36.4393, CER=54.47% | Best Train CER=44.53%
+Training: 100%|█████████████████████████████| 6819/6819 [03:26<00:00, 33.03it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.27it/s]
+Epoch 2/50: Train Loss=27.7794, CER=43.38% | Dev Loss=18.9914, CER=30.92% | Best Train CER=27.17%
+Training: 100%|█████████████████████████████| 6820/6820 [03:26<00:00, 33.08it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.84it/s]
+Epoch 3/50: Train Loss=17.2398, CER=28.82% | Dev Loss=12.7780, CER=21.28% | Best Train CER=17.72%
+Training: 100%|█████████████████████████████| 6824/6824 [03:26<00:00, 33.05it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.26it/s]
+Epoch 4/50: Train Loss=12.1258, CER=21.56% | Dev Loss=10.1319, CER=16.76% | Best Train CER=11.90%
+Training: 100%|█████████████████████████████| 6821/6821 [03:27<00:00, 32.88it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.24it/s]
+Epoch 5/50: Train Loss=9.5453, CER=17.42% | Dev Loss=8.8577, CER=14.66% | Best Train CER=9.72%
+Training: 100%|█████████████████████████████| 6819/6819 [03:27<00:00, 32.89it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.25it/s]
+Epoch 6/50: Train Loss=7.9888, CER=14.95% | Dev Loss=7.9439, CER=12.99% | Best Train CER=8.11%
+Training: 100%|█████████████████████████████| 6822/6822 [03:27<00:00, 32.92it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 107.05it/s]
+Epoch 7/50: Train Loss=6.7550, CER=12.69% | Dev Loss=7.5721, CER=12.21% | Best Train CER=6.15%
+Training: 100%|█████████████████████████████| 6821/6821 [03:26<00:00, 32.97it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.36it/s]
+Epoch 8/50: Train Loss=5.8684, CER=11.12% | Dev Loss=7.0773, CER=11.36% | Best Train CER=6.50%
+Training: 100%|█████████████████████████████| 6821/6821 [03:27<00:00, 32.93it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 104.77it/s]
+Epoch 9/50: Train Loss=5.1707, CER=9.98% | Dev Loss=6.8837, CER=10.88% | Best Train CER=6.25%
+Training: 100%|█████████████████████████████| 6821/6821 [03:27<00:00, 32.95it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.53it/s]
+Epoch 10/50: Train Loss=4.6662, CER=8.96% | Dev Loss=6.8400, CER=10.59% | Best Train CER=3.80%
+Training: 100%|█████████████████████████████| 6819/6819 [03:26<00:00, 32.96it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.89it/s]
+Epoch 11/50: Train Loss=4.1672, CER=8.13% | Dev Loss=6.6448, CER=10.06% | Best Train CER=3.33%
+Training: 100%|█████████████████████████████| 6822/6822 [03:26<00:00, 32.98it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.49it/s]
+Epoch 12/50: Train Loss=3.7935, CER=7.10% | Dev Loss=6.5809, CER=9.91% | Best Train CER=3.33%
+Training: 100%|█████████████████████████████| 6823/6823 [03:26<00:00, 33.00it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.63it/s]
+Epoch 13/50: Train Loss=3.4267, CER=7.03% | Dev Loss=6.5022, CER=9.60% | Best Train CER=3.70%
+Training: 100%|█████████████████████████████| 6820/6820 [03:26<00:00, 32.98it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.01it/s]
+Epoch 14/50: Train Loss=3.1497, CER=6.16% | Dev Loss=6.5514, CER=9.56% | Best Train CER=3.14%
+Training: 100%|█████████████████████████████| 6821/6821 [03:27<00:00, 32.89it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.71it/s]
+Epoch 15/50: Train Loss=2.8823, CER=5.81% | Dev Loss=6.4967, CER=9.25% | Best Train CER=2.40%
+Training: 100%|█████████████████████████████| 6822/6822 [03:27<00:00, 32.95it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.91it/s]
+Epoch 16/50: Train Loss=2.6613, CER=5.37% | Dev Loss=6.6127, CER=9.38% | Best Train CER=1.50%
+Training: 100%|█████████████████████████████| 6822/6822 [03:27<00:00, 32.84it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.12it/s]
+Epoch 17/50: Train Loss=2.4261, CER=4.95% | Dev Loss=6.5560, CER=9.14% | Best Train CER=1.74%
+Training: 100%|█████████████████████████████| 6824/6824 [03:26<00:00, 33.07it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.20it/s]
+Epoch 18/50: Train Loss=2.2782, CER=4.81% | Dev Loss=6.6943, CER=9.07% | Best Train CER=1.96%
+Training: 100%|█████████████████████████████| 6822/6822 [03:26<00:00, 32.98it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.68it/s]
+Epoch 19/50: Train Loss=2.1243, CER=4.39% | Dev Loss=6.7168, CER=9.01% | Best Train CER=1.13%
+Training: 100%|█████████████████████████████| 6822/6822 [03:26<00:00, 32.99it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.96it/s]
+Epoch 20/50: Train Loss=1.9884, CER=4.26% | Dev Loss=6.7499, CER=8.89% | Best Train CER=0.36%
+Training: 100%|█████████████████████████████| 6821/6821 [03:26<00:00, 33.06it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.07it/s]
+Epoch 21/50: Train Loss=1.8546, CER=4.24% | Dev Loss=6.8995, CER=8.88% | Best Train CER=1.20%
+Training: 100%|█████████████████████████████| 6819/6819 [03:27<00:00, 32.90it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.99it/s]
+Epoch 22/50: Train Loss=1.7633, CER=3.70% | Dev Loss=6.8748, CER=8.82% | Best Train CER=0.84%
+Training: 100%|█████████████████████████████| 6821/6821 [03:26<00:00, 32.98it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.08it/s]
+Epoch 23/50: Train Loss=1.6657, CER=3.48% | Dev Loss=6.8827, CER=8.69% | Best Train CER=0.75%
+Training: 100%|█████████████████████████████| 6820/6820 [03:26<00:00, 33.00it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.53it/s]
+Epoch 24/50: Train Loss=1.5653, CER=3.67% | Dev Loss=6.9059, CER=8.59% | Best Train CER=1.12%
+Training: 100%|█████████████████████████████| 6823/6823 [03:27<00:00, 32.85it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.05it/s]
+Epoch 25/50: Train Loss=1.4707, CER=2.83% | Dev Loss=7.0835, CER=8.68% | Best Train CER=0.37%
+Training: 100%|█████████████████████████████| 6820/6820 [03:26<00:00, 33.02it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.55it/s]
+Epoch 26/50: Train Loss=1.4052, CER=3.09% | Dev Loss=7.1467, CER=8.56% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6819/6819 [03:27<00:00, 32.92it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.21it/s]
+Epoch 27/50: Train Loss=1.3311, CER=2.90% | Dev Loss=7.2053, CER=8.54% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6820/6820 [03:26<00:00, 32.96it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.96it/s]
+Epoch 28/50: Train Loss=1.2797, CER=2.67% | Dev Loss=7.2651, CER=8.60% | Best Train CER=0.39%
+Training: 100%|█████████████████████████████| 6820/6820 [03:27<00:00, 32.86it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.58it/s]
+Epoch 29/50: Train Loss=1.2009, CER=2.53% | Dev Loss=7.3276, CER=8.46% | Best Train CER=0.72%
+Training: 100%|█████████████████████████████| 6822/6822 [03:27<00:00, 32.94it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.57it/s]
+Epoch 30/50: Train Loss=1.1520, CER=2.42% | Dev Loss=7.3621, CER=8.46% | Best Train CER=0.38%
+Training: 100%|█████████████████████████████| 6821/6821 [03:26<00:00, 32.96it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.21it/s]
+Epoch 31/50: Train Loss=1.0987, CER=2.27% | Dev Loss=7.3389, CER=8.40% | Best Train CER=0.38%
+Training: 100%|█████████████████████████████| 6822/6822 [03:27<00:00, 32.87it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.50it/s]
+Epoch 32/50: Train Loss=1.0451, CER=2.02% | Dev Loss=7.5116, CER=8.40% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6821/6821 [03:26<00:00, 32.95it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.34it/s]
+Epoch 33/50: Train Loss=0.9903, CER=1.84% | Dev Loss=7.4987, CER=8.34% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6821/6821 [03:26<00:00, 32.98it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.17it/s]
+Epoch 34/50: Train Loss=0.9579, CER=1.96% | Dev Loss=7.4989, CER=8.24% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6822/6822 [03:26<00:00, 32.97it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.12it/s]
+Epoch 35/50: Train Loss=0.9444, CER=1.99% | Dev Loss=7.6757, CER=8.40% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6818/6818 [03:27<00:00, 32.85it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.89it/s]
+Epoch 36/50: Train Loss=0.8881, CER=1.99% | Dev Loss=7.7268, CER=8.28% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6823/6823 [03:27<00:00, 32.86it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 107.12it/s]
+Epoch 37/50: Train Loss=0.8625, CER=1.86% | Dev Loss=7.8243, CER=8.32% | Best Train CER=0.36%
+Training: 100%|█████████████████████████████| 6821/6821 [03:26<00:00, 32.99it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.36it/s]
+Epoch 38/50: Train Loss=0.8358, CER=1.81% | Dev Loss=7.8709, CER=8.28% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6821/6821 [03:26<00:00, 33.02it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.87it/s]
+Epoch 39/50: Train Loss=0.7971, CER=1.62% | Dev Loss=7.7528, CER=8.21% | Best Train CER=0.00%
+Training: 100%|████████████████████████████▉| 6822/6823 [03:27<00:00, 32.92it/s]W0315 20:29:48.816000 12027 site-packages/torch/_dynamo/convert_frame.py:964] [0/8] torch._dynamo hit config.recompile_limit (8)
+W0315 20:29:48.816000 12027 site-packages/torch/_dynamo/convert_frame.py:964] [0/8]    function: 'forward' (/home/usrname/data/public_repositories/simplest_stt/models/ctc_conformer.py:109)
+W0315 20:29:48.816000 12027 site-packages/torch/_dynamo/convert_frame.py:964] [0/8]    last reason: 0/3: ((((-3) + x.size()[1]) // 4) % (x.size()[0]*(((-3) + x.size()[1]) // 4))) != 0  # return F.linear(input, self.weight, self.bias)  # nn/modules/linear.py:125 in forward (_refs/__init__.py:3785 in _reshape_view_helper)
+W0315 20:29:48.816000 12027 site-packages/torch/_dynamo/convert_frame.py:964] [0/8] To log all recompilation reasons, use TORCH_LOGS="recompiles".
+W0315 20:29:48.816000 12027 site-packages/torch/_dynamo/convert_frame.py:964] [0/8] To diagnose recompilation issues, see https://pytorch.org/docs/main/torch.compiler_troubleshooting.html.
+Training: 100%|█████████████████████████████| 6823/6823 [03:27<00:00, 32.89it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.39it/s]
+Epoch 40/50: Train Loss=0.7621, CER=1.87% | Dev Loss=7.9373, CER=8.19% | Best Train CER=0.37%
+Training: 100%|█████████████████████████████| 6822/6822 [03:27<00:00, 32.91it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.73it/s]
+Epoch 41/50: Train Loss=0.7325, CER=1.32% | Dev Loss=7.9964, CER=8.27% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6820/6820 [03:27<00:00, 32.90it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.98it/s]
+Epoch 42/50: Train Loss=0.7076, CER=1.76% | Dev Loss=7.9790, CER=8.20% | Best Train CER=0.38%
+Training: 100%|█████████████████████████████| 6819/6819 [03:26<00:00, 33.02it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.14it/s]
+Epoch 43/50: Train Loss=0.6839, CER=1.58% | Dev Loss=8.0464, CER=8.19% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6820/6820 [03:27<00:00, 32.94it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.64it/s]
+Epoch 44/50: Train Loss=0.6767, CER=1.45% | Dev Loss=8.1747, CER=8.22% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6822/6822 [03:27<00:00, 32.90it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.30it/s]
+Epoch 45/50: Train Loss=0.6529, CER=1.55% | Dev Loss=8.2198, CER=8.31% | Best Train CER=0.37%
+Training: 100%|█████████████████████████████| 6821/6821 [03:27<00:00, 32.93it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 104.96it/s]
+Epoch 46/50: Train Loss=0.6241, CER=1.45% | Dev Loss=8.2324, CER=8.14% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6823/6823 [03:26<00:00, 33.05it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.28it/s]
+Epoch 47/50: Train Loss=0.6269, CER=1.33% | Dev Loss=8.3350, CER=8.18% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6823/6823 [03:26<00:00, 32.99it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.70it/s]
+Epoch 48/50: Train Loss=0.6178, CER=1.51% | Dev Loss=8.3117, CER=8.24% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6823/6823 [03:26<00:00, 32.96it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 105.90it/s]
+Epoch 49/50: Train Loss=0.5883, CER=1.25% | Dev Loss=8.2786, CER=8.10% | Best Train CER=0.00%
+Training: 100%|█████████████████████████████| 6820/6820 [03:27<00:00, 32.93it/s]
+Development: 100%|███████████████████████████| 818/818 [00:07<00:00, 106.15it/s]
+Epoch 50/50: Train Loss=0.5589, CER=1.15% | Dev Loss=8.3827, CER=8.12% | Best Train CER=0.00%
