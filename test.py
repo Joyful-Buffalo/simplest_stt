@@ -47,7 +47,7 @@ class Test:
             prefetch_factor=self.dataset_config["prefetch_factor"],
         )
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model = self.load_model(os.path.join(proj_root, 'log', '20260315-180311', 'best_model.pth'))
+        self.model = self.load_model(os.path.join(proj_root, 'log', '20260226-204151', 'best_model.pth'))
 
     def load_model(self, model_path='None'):
         origin_weight = torch.load(model_path, map_location=self.device)
