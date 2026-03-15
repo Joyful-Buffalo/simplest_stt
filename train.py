@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import sys
 import time
-from typing import List
 
 import torch
 import torch.nn as nn
@@ -18,7 +17,7 @@ from utils.asr_collate_fn import asr_collate_fn
 from utils.noamLR import NoamLR
 from torch.nn.attention import sdpa_kernel, SDPBackend
 from torch.nn import functional
-
+from utils.decoder import ctc_greedy_decode_ids
 
 class Trainer:
     def __init__(self, proj_root=load_proj_root()):
@@ -114,25 +113,6 @@ class Trainer:
             _ = model(features, feature_lengths)
         return model
     
-    def ctc_greedy_decode_ids(
-            self,
-            logit_batch:torch.Tensor,
-            lengths:torch.Tensor,
-            blank_id:int=0
-        ):
-        with torch.no_grad():
-            pred_ids = torch.argmax(logit_batch, dim=-1)
-        results:List[List[int]] = []
-        for b in range(logit_batch.size(0)):
-            pred_id_seq = pred_ids[b][:lengths[b]].tolist()
-            prev_id = None
-            decoded_ids = []
-            for pid in pred_id_seq:
-                if pid != blank_id and pid != prev_id:
-                    decoded_ids.append(pid)
-                prev_id = pid
-            results.append(decoded_ids)
-        return results
 
     def char_edir_distance(self,real:str, pred:str) -> int:
         m = len(real)
@@ -178,7 +158,7 @@ class Trainer:
                     # print("invalid_ratio", invalid / out_lens.numel())
                     # print(f'out_lens: {out_lens}, target_lengths: {target_lengths}')
                     with torch.no_grad():
-                        pred_ids_batch = self.ctc_greedy_decode_ids(
+                        pred_ids_batch = ctc_greedy_decode_ids(
                             logit_batch=logits,
                             lengths=out_lens,
                             blank_id=0
@@ -234,7 +214,7 @@ class Trainer:
                         log_probs = functional.log_softmax(logits, dim=-1).transpose(0, 1)  # (time, batch, vocab_size)
                     loss = self.loss(log_probs, targets, out_lens, target_lengths)
                     loss = loss / features.size(0)
-                    pred_ids_batch = self.ctc_greedy_decode_ids(
+                    pred_ids_batch = ctc_greedy_decode_ids(
                         logit_batch=logits,
                         lengths=out_lens,
                         blank_id=0
