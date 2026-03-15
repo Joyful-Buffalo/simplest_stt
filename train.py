@@ -18,6 +18,7 @@ from utils.noamLR import NoamLR
 from torch.nn.attention import sdpa_kernel, SDPBackend
 from torch.nn import functional
 from utils.decoder import ctc_greedy_decode_ids
+from utils.char_edit_distance import char_edit_distance
 
 class Trainer:
     def __init__(self, proj_root=load_proj_root()):
@@ -114,26 +115,6 @@ class Trainer:
         return model
     
 
-    def char_edir_distance(self,real:str, pred:str) -> int:
-        m = len(real)
-        n = len(pred)
-        dp = [[0] * (n + 1) for _ in range(m + 1)]
-        for i in range(m + 1):
-            dp[i][0] = i
-        for j in range(n + 1):
-            dp[0][j] = j
-        for i in range(1, m + 1):
-            for j in range(1, n + 1):
-                if real[i - 1] == pred[j - 1]:
-                    dp[i][j] = dp[i - 1][j - 1]
-                else:
-                    dp[i][j] = min(
-                        dp[i - 1][j] + 1,
-                        dp[i][j - 1] + 1,
-                        dp[i - 1][j - 1] + 1
-                    )
-        return dp[m][n]
-
     def train_epoch(self):
         best_cer = float('inf')
         total_loss = 0.0
@@ -172,7 +153,7 @@ class Trainer:
                             offset += cur_len
                             target_str = self.char_tokenizer.decode(target_ids)
                             pred_str = self.char_tokenizer.decode(pred_ids_batch[b])
-                            cer = self.char_edir_distance(target_str, pred_str)
+                            cer = char_edit_distance(target_str, pred_str)
                             batch_cer_sum += cer
                             batch_total_chars += len(target_str)
                         cer_sum += batch_cer_sum
@@ -226,7 +207,7 @@ class Trainer:
                         offset += cur_len
                         target_str = self.char_tokenizer.decode(target_ids)
                         pred_str = self.char_tokenizer.decode(pred_ids_batch[b])
-                        cer = self.char_edir_distance(target_str, pred_str)
+                        cer = char_edit_distance(target_str, pred_str)
                         cer_sum += cer
                         total_chars += len(target_str)
                     total_loss += loss.item()
