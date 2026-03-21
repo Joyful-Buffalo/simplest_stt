@@ -1,4 +1,3 @@
-# [完整替换] quantize/make_calib.py
 from __future__ import annotations
 
 import sys
@@ -75,11 +74,8 @@ def main():
     yaml_config = load_yaml(yaml_path)
     feat_dim = int(yaml_config["dataset_config"]["fbank_config"]["feature_dim"])
 
-    # [修改1] 这里的 calib_t 就是量化阶段 --calibration_shapes 里的 T
-    # 你的 ONNX 允许 T 动态，但单个 npz 校准包必须选一个固定代表形状
+    # 单个 npz 校准包必须选一个固定代表形状
     calib_t = 512
-
-    # [修改2] 这里的 steps 表示要准备多少个“1xcalib_t x feat_dim”的校准样本
     calib_steps = 256
 
     dataset = build_dataset(proj_root, yaml_config)
@@ -109,14 +105,10 @@ def main():
         if feat.shape[1] != feat_dim:
             raise RuntimeError(f"feature_dim 不一致: 数据={feat.shape[1]}, 配置={feat_dim}")
 
-        # [修改3] 不能“补零到 calib_t 但又假装是真实长度”
-        # 因为你导出的 wrapper 里 input_lengths 是由 x.shape[1] 在图里自动生成的
-        # 所以这里必须让真正送入 ONNX 的时间维就是 calib_t
+        # 不能“补零到 calib_t 但又假装是真实长度”
         if feat_len < calib_t:
             skipped_short += 1
             continue
-
-        # [修改4] 长样本裁成固定 calib_t；这里用中间裁剪，避免永远只取开头
         feat = center_crop(feat[:feat_len], calib_t).astype(np.float32, copy=False)
         samples.append(feat)
 
@@ -130,11 +122,8 @@ def main():
             f"请减小 calib_t，或换更长的数据集。"
         )
 
-    # [修改5] 正确格式是 [N, T, F]，不要再额外加一个 batch 维
-    # ModelOpt 会按 calibration_shapes 里的 batch=1 自动切成 N 次 [1, T, F]
     calib_arr = np.stack(samples, axis=0).astype(ort_type_to_np(feat_input.type), copy=False)
 
-    # [修改6] 先做一次 ORT 干跑，确保单条 [1, T, F] 能直接喂通 ONNX
     dry_run = calib_arr[:1]
     _ = sess.run(None, {feat_input.name: dry_run})
     print("ORT dry-run passed.")
@@ -143,30 +132,6 @@ def main():
 
     print(f"\n已生成: {calib_npz_path}")
     print(f"  {feat_input.name}: shape={calib_arr.shape}, dtype={calib_arr.dtype}")
-
-    # [修改7] 量化阶段要显式告诉 ModelOpt 这个固定校准形状
-    print(
-        f'\n建议量化参数: --calibration_shapes "{feat_input.name}:1x{calib_t}x{feat_dim}"'
-    )
-
-    # [修改8] 给出你后续直接可用的命令模板
-    print("\n量化命令示例：")
-    print(
-        "python -m modelopt.onnx.quantization "
-        f'--onnx_path "{onnx_path}" '
-        "--quantize_mode int8 "
-        f'--calibration_data_path "{calib_npz_path}" '
-        '--calibration_method entropy '
-        f'--calibration_shapes "{feat_input.name}:1x{calib_t}x{feat_dim}" '
-        f'--output_path "{proj_root / "model_int8.onnx"}"'
-    )
-
-    print("\n后续 TensorRT 动态 profile 示例：")
-    print(
-        f'--minShapes={feat_input.name}:1x64x{feat_dim} '
-        f'--optShapes={feat_input.name}:1x{calib_t}x{feat_dim} '
-        f'--maxShapes={feat_input.name}:1x1024x{feat_dim}'
-    )
 
 
 if __name__ == "__main__":
