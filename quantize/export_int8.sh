@@ -27,9 +27,9 @@ python -m modelopt.onnx.quantization \
 # onnx->engine
 "$trtexec" \
   --onnx="$onnx" \
-  --minShapes="input:1x64x80" \
-  --optShapes="input:1x256x80" \
-  --maxShapes="input:1x1024x80" \
+  --minShapes="input:1x128x80" \
+  --optShapes="input:1x512x80" \
+  --maxShapes="input:1x1536x80" \
   --stronglyTyped \
   --memPoolSize=workspace:8192 \
   --profilingVerbosity=detailed \
@@ -40,9 +40,9 @@ python -m modelopt.onnx.quantization \
 # test qps
 "$trtexec" \
   --loadEngine="$eng" \
-  --minShapes="input:1x64x80" \
-  --optShapes="input:1x256x80" \
-  --maxShapes="input:1x1024x80" \
+  --minShapes="input:1x128x80" \
+  --optShapes="input:1x512x80" \
+  --maxShapes="input:1x1536x80" \
   --warmUp=2000 \
   --duration=10 \
   --useCudaGraph \
